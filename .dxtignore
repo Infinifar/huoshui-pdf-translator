@@ -1,0 +1,71 @@
+# DXT Ignore File - Exclude files from the DXT package
+
+# Virtual environment (will be recreated during installation)
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Cache directories
+.ruff_cache/
+.pytest_cache/
+.coverage
+.cache/
+
+# Development files
+.git/
+.gitignore
+.python-version
+.claude/
+
+# DXT development files (keep these out of final package)
+.dxt/
+DXT_SUMMARY.md
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Test files (if any)
+tests/
+test_*.py
+*_test.py
+
+# Documentation that's not needed in package
+docs/
+*.md.bak
+
+# Lock files that aren't needed
+poetry.lock
+Pipfile.lock
+# Keep uv.lock as it's needed
+
+# Environment files
+.env
+.env.*
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Backup files
+*.bak
+*.backup

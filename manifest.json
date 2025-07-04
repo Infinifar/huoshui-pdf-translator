@@ -1,0 +1,129 @@
+{
+  "dxt_version": "0.1",
+  "name": "huoshui-pdf-translator",
+  "display_name": "Huoshui PDF Translator",
+  "version": "0.1.0",
+  "description": "AI-powered PDF translation assistant specialized in academic papers with mathematical formulas. Now available on PyPI!",
+  "long_description": "This extension provides PDF translation capabilities through a FastMCP server powered by pdf2zh-next. It specializes in academic papers with mathematical formulas, preserving formatting while providing accurate Chinese-English translations. Now professionally distributed via PyPI for easy installation with uvx.",
+  "author": {
+    "name": "Huoshui AI",
+    "url": "https://github.com/huoshuiai/huoshui-pdf-translator"
+  },
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/huoshuiai/huoshui-pdf-translator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/huoshuiai/huoshui-pdf-translator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/huoshuiai/huoshui-pdf-translator/issues"
+  },
+  "keywords": ["pdf", "translation", "academic", "mathematics", "chinese", "english", "formulas"],
+  "server": {
+    "type": "python",
+    "entry_point": "huoshui_pdf_translator.main:main",
+    "pypi_package": "huoshui-pdf-translator",
+    "recommended_install": "uvx huoshui-pdf-translator",
+    "mcp_config": {
+      "command": "uvx",
+      "args": [
+        "huoshui-pdf-translator"
+      ]
+    },
+    "legacy_config": {
+      "command": "uv",
+      "args": [
+        "run",
+        "python",
+        "${__dirname}/huoshui_pdf_translator/main.py"
+      ],
+      "env": {
+        "PYTHONPATH": "${__dirname}"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "translate_pdf",
+      "description": "Translates PDF documents while preserving mathematical formulas and layout using pdf2zh-next engine"
+    },
+    {
+      "name": "pdf_get", 
+      "description": "Retrieves detailed information about a PDF file including size, page count, and validation status"
+    },
+    {
+      "name": "warm_up_translator",
+      "description": "Warm up the PDF translator by downloading required assets and models. Run this first to avoid timeouts"
+    },
+    {
+      "name": "check_translation_tool",
+      "description": "Checks if the pdf2zh tool is properly installed and available for use"
+    }
+  ],
+  "prompts": [
+    {
+      "name": "role_and_rules",
+      "description": "Core identity and operational rules for the PDF translation assistant",
+      "text": "You are a specialized PDF Translation Assistant powered by pdf2zh-next. Your primary goal is to help users translate PDF documents, especially those containing mathematical formulas and academic content. You support flexible path formats and provide comprehensive translation capabilities with real-time progress reporting."
+    },
+    {
+      "name": "explain_pdf_paths",
+      "description": "Help users understand how to specify PDF file paths correctly",
+      "text": "Here are easy ways to specify PDF file paths: 1) Relative to home: Desktop/document.pdf, Documents/paper.pdf 2) Full absolute path: /Users/Name/Documents/research.pdf 3) Simple names: paper.pdf (assumes home directory). The system supports flexible path formats for user convenience."
+    },
+    {
+      "name": "explain_translation_options", 
+      "description": "Explain available translation options and best practices",
+      "text": "PDF Translation Options: Auto-detect language mode, Chinese ↔ English translation, mathematical formula preservation, layout retention. Best for academic papers, technical documents, and scientific articles. Processing takes 2-5 minutes for first use (font downloads), then 30-60 seconds for subsequent translations."
+    },
+    {
+      "name": "troubleshoot_translation_error",
+      "description": "Provide helpful guidance for common translation errors", 
+      "text": "Common translation issues and solutions: 1) File not found - Check path spelling and location 2) Translation timeout - Run warm_up_translator first 3) Tool not found - Install with 'uv add pdf2zh-next' 4) Network issues - Ensure internet connection for font downloads 5) Scanned PDFs - Ensure text is selectable, not image-based."
+    },
+    {
+      "name": "explain_translation_result",
+      "description": "Explain translation results clearly and provide next steps",
+      "text": "Translation complete! Your PDF has been successfully translated. Two files are created: filename.zh.dual.pdf (bilingual version with original and translation) and filename.zh.mono.pdf (Chinese-only version). Both preserve mathematical formulas and original formatting. Review the translation quality, especially formulas and technical terms."
+    }
+  ],
+  "platforms": ["darwin", "linux", "win32"],
+  "compatibility": {
+    "dxt": ">=0.1.0"
+  },
+  "user_config": {
+    "debug_mode": {
+      "type": "boolean",
+      "title": "Debug Mode",
+      "description": "Enable debug logging for troubleshooting",
+      "default": false,
+      "required": false
+    }
+  },
+  "categories": [
+    "document-processing",
+    "translation", 
+    "academic-tools"
+  ],
+  "features": [
+    "Academic paper translation with mathematical formula preservation",
+    "Multi-language support with auto-detection",
+    "Real-time progress reporting during translation",
+    "Comprehensive error diagnosis and troubleshooting",
+    "Flexible file path handling (absolute and relative)",
+    "PDF analysis and validation",
+    "Tool status verification",
+    "Context-aware intelligent assistance"
+  ],
+  "requirements": {
+    "python": ">=3.12",
+    "external_tools": [
+      {
+        "name": "pdf2zh",
+        "description": "pdf2zh-next command-line tool",
+        "installation": "uv add pdf2zh-next",
+        "verification": "pdf2zh --version"
+      }
+    ]
+  }
+}
