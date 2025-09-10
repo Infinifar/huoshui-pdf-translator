@@ -1,0 +1,36 @@
+name: Publish Python MCP Server
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ensure build tools
+        run: |
+          sudo apt-get update -y | cat
+          sudo apt-get install -y make | cat
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
+
+      - name: Install MCP Publisher
+        run: |
+          git clone https://github.com/modelcontextprotocol/registry publisher-repo
+          cd publisher-repo && make publisher && cd ..
+          cp publisher-repo/bin/mcp-publisher mcp-publisher
+          chmod +x mcp-publisher
+
+      - name: Publish to MCP Registry
+        run: |
+          ./mcp-publisher login github-oidc
+          ./mcp-publisher publish

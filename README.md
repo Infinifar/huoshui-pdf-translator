@@ -33,15 +33,20 @@ An intelligent PDF translation assistant that specializes in academic papers wit
 
 ## 🚀 Quick Start
 
-### Installation (Recommended)
+### Installation
 
-**One-command installation via uvx:**
+#### From MCP Registry (Recommended)
+
+This server is available in the Model Context Protocol
+Registry. Install it using your MCP client.
+
+mcp-name: io.github.huoshuiai42/huoshui-pdf-translator
+
+#### Using uvx
 
 ```bash
 uvx huoshui-pdf-translator
 ```
-
-That's it! No local dependencies, no file paths, no setup required.
 
 ### Claude Desktop Setup
 
@@ -61,16 +66,19 @@ Add this to your Claude Desktop MCP configuration:
 ### Alternative Installation Methods
 
 **Via pipx:**
+
 ```bash
 pipx install huoshui-pdf-translator
 ```
 
 **Via UV tools:**
+
 ```bash
 uv tool install huoshui-pdf-translator
 ```
 
 **Claude Desktop config for UV tools:**
+
 ```json
 {
   "mcpServers": {
@@ -179,7 +187,9 @@ paper.pdf
 ### Common Issues
 
 #### Translation Tool Not Available
+
 The tool automatically installs `pdf2zh-next` when needed. If issues occur:
+
 ```bash
 # Check status
 # Use check_translation_tool in Claude Desktop
@@ -189,23 +199,27 @@ pip install pdf2zh-next
 ```
 
 #### First Translation Timeout
+
 ```bash
 # Run warmup first
 # Use warm_up_translator tool in Claude Desktop
 ```
 
 #### PDF File Not Found
+
 - Verify file path is correct
 - Use absolute paths for clarity
 - Check file hasn't been moved or deleted
 
 #### Network Issues
+
 - Ensure internet connection (required for first-time font downloads)
 - Check firewall settings
 
 ### Error Diagnosis
 
 The assistant provides intelligent error diagnosis with specific solutions for:
+
 - File not found errors
 - Invalid PDF files
 - Translation tool issues
@@ -217,6 +231,7 @@ The assistant provides intelligent error diagnosis with specific solutions for:
 ### For Developers
 
 **Install from source:**
+
 ```bash
 git clone https://github.com/huoshuiai/huoshui-pdf-translator.git
 cd huoshui-pdf-translator
@@ -225,6 +240,7 @@ uv run python -m huoshui_pdf_translator.main
 ```
 
 **Build and publish:**
+
 ```bash
 uv build
 uv run twine upload dist/*
@@ -245,6 +261,7 @@ huoshui-pdf-translator/
 ## 🔄 Updates
 
 **Update to latest version:**
+
 ```bash
 uvx install --upgrade huoshui-pdf-translator
 # or
@@ -268,6 +285,6 @@ This project is licensed under the Apache-2.0 License. See the LICENSE file for 
 ## 🙏 Acknowledgments
 
 - **PDFMathTranslate-next**: Core translation engine
-- **FastMCP**: Framework for intelligent assistant capabilities  
+- **FastMCP**: Framework for intelligent assistant capabilities
 - **Anthropic**: MCP protocol and ecosystem
 - **UV & PyPI**: Modern Python packaging and distribution

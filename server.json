@@ -1,0 +1,23 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.schema.json",
+  "name": "io.github.huoshuiai42/huoshui-pdf-translator",
+  "description": "An MCP server that provides PDF translation service",
+  "status": "active",
+  "repository": {
+    "url": "https://github.com/huoshuiai42/huoshui-pdf-translator",
+    "source": "github"
+  },
+  "version": "1.0.0",
+  "packages": [
+    {
+      "registry_type": "pypi",
+      "registry_base_url": "https://pypi.org",
+      "identifier": "huoshui-pdf-translator",
+      "version": "1.0.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environment_variables": []
+    }
+  ]
+}

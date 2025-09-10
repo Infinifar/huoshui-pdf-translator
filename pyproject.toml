@@ -1,6 +1,6 @@
 [project]
 name = "huoshui-pdf-translator"
-version = "0.1.0"
+version = "0.1.1"
 description = "AI-powered PDF translation assistant using PDFMathTranslate-next, specialized for academic papers with mathematical formulas"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -40,8 +40,6 @@ dev = [
     "pytest-asyncio>=0.21.0",
     "black>=23.0.0",
     "ruff>=0.1.0",
-    "build>=1.0.0",
-    "twine>=4.0.0",
 ]
 
 [build-system]
@@ -77,6 +75,14 @@ testpaths = ["tests"]
 
 [dependency-groups]
 dev = [
+    "build>=1.2.2.post1",
+    "twine>=6.1.0",
+    "pytest>=7.4.0",
+    "pytest-asyncio>=0.21.0", 
+    "black>=23.0.0",
+    "ruff>=0.1.0",
+]
+publish = [
     "build>=1.2.2.post1",
     "twine>=6.1.0",
 ]
