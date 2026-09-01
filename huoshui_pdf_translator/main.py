@@ -26,6 +26,7 @@ PDF2ZH_EXTRA_ARGS = os.environ.get("PDF2ZH_EXTRA_ARGS", "").split()
 # 高位随机端口，避免与 8000/8080/11434 等常见端口冲突
 MCP_HOST = os.environ.get("PDF2ZH_MCP_HOST", "0.0.0.0")
 MCP_PORT = int(os.environ.get("PDF2ZH_MCP_PORT", "45678"))
+MCP_PATH = os.environ.get("PDF2ZH_MCP_PATH", "/mcp")
 
 # =============================================================================
 # DATA MODELS
@@ -616,9 +617,9 @@ def check_translation_tool() -> dict[str, str]:
 
 def main():
     """Main entry point for the console script."""
-    print(f"Starting Huoshui PDF Translator MCP server (SSE mode) on {MCP_HOST}:{MCP_PORT} ...")
-    # SSE 传输，监听所有网卡，供局域网内 RikkaHub 等移动端连接
-    mcp.run(transport="sse", host=MCP_HOST, port=MCP_PORT)
+    print(f"Starting Huoshui PDF Translator MCP server (Streamable HTTP) on {MCP_HOST}:{MCP_PORT}{MCP_PATH} ...")
+    # Streamable HTTP 传输（MCP 新标准，替代已废弃的 SSE）
+    mcp.run(transport="http", host=MCP_HOST, port=MCP_PORT, path=MCP_PATH)
 
 # Main execution
 if __name__ == "__main__":
